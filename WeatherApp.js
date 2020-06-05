@@ -12,8 +12,15 @@ function get() {
             var render = (template, node) => {
                 node.innerHTML = template;
             };
+            var template = "<h1>" + result.data[0].city_name + "</h1>";
+            render(template, document.querySelector(".app-title"));
+
             var template = "<h1>" + result.data[0].temp + "</h1>";
             render(template, document.querySelector(".temperature-value"));
+
+            var template = "<h1>" + '<img src="./icons/01d.png"/>' + "</h1 >";
+            render(template, document.querySelector(".weather-image"));
+
             var template = "<h1>" + result.data[0].weather.description + "</h1>";
             render(template, document.querySelector(".temperature-description"));
         });

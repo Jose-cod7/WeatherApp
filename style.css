@@ -1,9 +1,17 @@
 .container {
     margin: auto;
     text-align: center;
-    border: 2px solid cornflowerblue;
+    border: 5px solid cornflowerblue;
     width: 500px;
-    padding: 10px;
-    border-radius: 5px;
+    padding: 5px;
+    border-radius: 10px;
     margin-top: 30px;
+    background-color: rgb(255, 255, 255);
+}
+
+.weather-container {
+    background-color: rgb(225, 244, 255);
+    padding: 0px;
+    width: 100%;
+    border-radius: 5px;
 }
