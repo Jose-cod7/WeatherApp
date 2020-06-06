@@ -1,27 +1,25 @@
+const apiKey = "&key=102f9eb3d1414e51822b2198e4429e79";
+const URL = "https://api.weatherbit.io/v2.0/current";
+console.log(apiKey);
+
 get();
 
 function get() {
-    fetch(
-            "https://api.weatherbit.io/v2.0/current?lat=41.388&lon=2.158&key=94732983488740c7ac18361880e08e1d"
-        )
-        .then((result) => {
-            return result.json();
-        })
-        .then((result) => {
-            console.log(result);
-            var render = (template, node) => {
-                node.innerHTML = template;
-            };
-            var template = "<h1>" + result.data[0].city_name + "</h1>";
-            render(template, document.querySelector(".app-title"));
-
-            var template = "<h1>" + result.data[0].temp + "</h1>";
-            render(template, document.querySelector(".temperature-value"));
-
-            var template = "<h1>" + '<img src="./icons/01d.png"/>' + "</h1 >";
-            render(template, document.querySelector(".weather-image"));
-
-            var template = "<h1>" + result.data[0].weather.description + "</h1>";
-            render(template, document.querySelector(".temperature-description"));
+    fetch(URL + "?" + "&lat=41.41&lon=2.19" + apiKey)
+        .then((response) => response.json())
+        .then((weatherInfo) => {
+            render(weatherInfo);
+            console.log(weatherInfo);
         });
+}
+
+function render(weatherInfo) {
+    let tempValue = document.querySelector("#temp-value");
+    tempValue.innerHTML = weatherInfo.data[0].temp;
+
+    let tempDescrip = document.querySelector("#temp-descrip");
+    tempDescrip.innerHTML = weatherInfo.data[0].weather.description;
+
+    let tempIcon = document.querySelector(".temp-icon");
+    //tempIcon.src = ;
 }

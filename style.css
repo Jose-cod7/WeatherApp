@@ -15,3 +15,10 @@
     width: 100%;
     border-radius: 5px;
 }
+
+#temp-value,
+#temp-descrip {
+    font-family: "Gill Sans", sans-serif;
+    font-size: 60px;
+    font-weight: 700;
+}
