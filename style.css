@@ -1,3 +1,7 @@
+body {
+    background-color: rgb(57, 67, 128);
+}
+
 .container {
     margin: auto;
     text-align: center;
@@ -10,7 +14,7 @@
 }
 
 .weather-container {
-    background-color: rgb(225, 244, 255);
+    background-color: rgb(205, 230, 245);
     padding: 0px;
     width: 100%;
     border-radius: 5px;
@@ -36,4 +40,13 @@
     font-size: 40px;
     font-weight: 700;
     color: rgb(55, 56, 54);
+}
+
+.topnav input[type="text"] {
+    float: left;
+    padding: 6px;
+    border: none;
+    margin-top: 8px;
+    margin-right: 16px;
+    font-size: 17px;
 }

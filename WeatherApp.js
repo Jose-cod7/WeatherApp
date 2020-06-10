@@ -1,7 +1,7 @@
 const apiKey = "&key=102f9eb3d1414e51822b2198e4429e79";
-const URL = "https://api.weatherbit.io/v2.0/current";
-let latitude = 41.388;
-let longitude = 2.158;
+const URL = "https://api.weatherbit.io/v2.0/current"; // para comprobar que .catch funciona, borrar la ultima letra 't'.
+let latitude;
+let longitude;
 console.log(apiKey);
 
 const cities = [];
@@ -26,14 +26,14 @@ cities.push({
     longitude: -0.38,
 });
 
-get(latitude, longitude);
+console.log(cities);
 
 function get(latitude, longitude) {
     fetch(URL + "?" + "&lat=" + latitude + "&lon=" + longitude + apiKey)
         .then((response) => response.json())
         .then((weatherInfo) => {
-            render(weatherInfo);
-            console.log(weatherInfo);
+            render(weatherInfo.data[0]);
+            console.log("INFO", weatherInfo);
         })
         .catch((error) => {
             console.error("Error", error);
@@ -42,53 +42,49 @@ function get(latitude, longitude) {
 }
 
 function render(weatherInfo) {
-    let tempValue = document.querySelector("#temp-value");
-    tempValue.innerHTML = weatherInfo.data[0].temp;
-
-    let tempDescrip = document.querySelector("#temp-descrip");
-    tempDescrip.innerHTML = weatherInfo.data[0].weather.description;
-
-    let tempIcon = document.querySelector("#temp-icon");
-    tempIcon.src = "icons/" + weatherInfo.data[0].weather.icon + ".png";
-
-    let tempLocation = document.querySelector("#city");
-    tempLocation.innerHTML = weatherInfo.data[0].city_name;
+    console.log(weatherInfo);
 
     //***** DOM to create the container of each city*****
 
     const container = document.createElement("div");
     container.className = "container";
+    container.id = weatherInfo.city_name;
 
     const title = document.createElement("div");
     title.className = "app-title";
 
+    // assign values
     const pTitle = document.createElement("p");
     pTitle.id = "city";
+    pTitle.innerHTML = weatherInfo.city_name;
 
     const notification = document.createElement("div");
     notification.className = "notification";
 
     const weatherContainer = document.createElement("div");
-    weatherContainer.className = "weatherContainer";
+    weatherContainer.className = "weather-container";
 
     const weatherImg = document.createElement("div");
     weatherImg.className = "weather-image";
 
+    // assign values
+
     const weatherImage = document.createElement("img");
     weatherImage.id = "temp-icon";
     weatherImage.src = "icons/unknown.png";
+    weatherImage.src = "icons/" + weatherInfo.weather.icon + ".png";
 
     const tempValueDiv = document.createElement("div");
     tempValueDiv.className = "temperature-value";
-
     const pTempValue = document.createElement("p");
     pTempValue.id = "temp-value";
+    pTempValue.innerHTML = weatherInfo.temp;
 
     const tempDescripDiv = document.createElement("div");
     tempDescripDiv.className = "temperature-description";
-
     const pTempDescription = document.createElement("p");
     pTempDescription.id = "temp-descrip";
+    pTempDescription.innerHTML = weatherInfo.weather.description;
 
     const tempLocationDiv = document.createElement("div");
     tempLocationDiv.className = "location";
@@ -116,4 +112,6 @@ function renderError(error) {
     tempValue.innerHTML = "No work...";
 }
 
-cities.forEach;
+cities.forEach((city) => {
+    get(city.latitude, city.longitude);
+});

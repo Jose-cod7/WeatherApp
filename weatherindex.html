@@ -9,28 +9,12 @@
 
 <body>
 
-    <div class="container">
-        <div class="app-title">
-            <p id='city'>Weather</p>
-        </div>
-        <div class="notification"> </div>
-        <div class="weather-container">
-            <div class="weather-image">
-                <img id='temp-icon' src="icons/unknown.png" alt="">
-            </div>
-            <div class="temperature-value">
-                <p id='temp-value'>- °<span>C</span></p>
-            </div>
-            <div class="temperature-description">
-                <p id='temp-descrip'> - </p>
-            </div>
-            <div class="location">
-                <p id="temp-location"></p>
+    <form class="search-weather" action="WeatherApp.js">
+        <input type="text" placeholder="Search.." name="search">
+        <button type="submit"><i >Search</i></button>
+    </form>
 
 
-            </div>
-        </div>
-    </div>
 
     <script src="WeatherApp.js"></script>
 </body>
