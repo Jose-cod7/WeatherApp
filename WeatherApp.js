@@ -53,11 +53,6 @@ function render(weatherInfo) {
     const title = document.createElement("div");
     title.className = "app-title";
 
-    // assign values
-    const pTitle = document.createElement("p");
-    pTitle.id = "city";
-    pTitle.innerHTML = weatherInfo.city_name;
-
     const notification = document.createElement("div");
     notification.className = "notification";
 
@@ -68,6 +63,9 @@ function render(weatherInfo) {
     weatherImg.className = "weather-image";
 
     // assign values
+    const pTitle = document.createElement("p");
+    pTitle.id = "city";
+    pTitle.innerHTML = weatherInfo.city_name;
 
     const weatherImage = document.createElement("img");
     weatherImage.id = "temp-icon";
